@@ -7,7 +7,7 @@ class Book {
     }
 }
 
-//display constructor
+
 class Display {
    
     //Add methods to display prototype

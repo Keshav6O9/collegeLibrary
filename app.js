@@ -1,53 +1,50 @@
 //constructor
-function Book(name, author, genre) {
-    this.name = name;
-    this.author = author;
-    this.genre = genre
+class Book {
+    constructor(name, author, genre) {
+        this.name = name;
+        this.author = author;
+        this.genre = genre;
+    }
 }
 
 //display constructor
-function Display() {
-}
-
-//Add methods to display prototype
-Display.prototype.add = function (book) {
-    let tableBody = document.getElementById("tableBody");
-    let uiString = ` <tr>
+class Display {
+   
+    //Add methods to display prototype
+    add(book) {
+        let tableBody = document.getElementById("tableBody");
+        let uiString = ` <tr>
         
                      <td>${book.name}</td>
                      <td>${book.author}</td>
                      <td>${book.genre}</td>
                      </tr >  `;
 
-    tableBody.innerHTML += uiString;
-}
+        tableBody.innerHTML += uiString;
+    }
+    clear() {
+        let libraryForm = document.getElementById("libraryForm");
+        libraryForm.reset();
+    }
+    validate(book) {
+        if (book.name.length < 2 || book.author.length < 2)
+            return false;
 
-
-Display.prototype.clear = function(){
-    let libraryForm = document.getElementById("libraryForm")
-    libraryForm.reset();
-}
-
-Display.prototype.validate = function(book){
-   if (book.name.length <2 || book.author.length<2)
-   return false;
-   else
-   return true;
-}
-
-
-Display.prototype.show = function(type,message){
- let msg =   document.getElementById('msg')
- msg.innerHTML =`<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+        else
+            return true;
+    }
+    show(type, message) {
+        let msg = document.getElementById('msg');
+        msg.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
                 <strong>Holy guacamole!</strong> ${message}.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>`;
 
-    setTimeout(() =>{
-        msg.innerHTML=""
-    },1000); 
+        setTimeout(() => {
+            msg.innerHTML = "";
+        }, 1000);
+    }
 }
-
 
 
 // add submit event listener to form libraryForm
